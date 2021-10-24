@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, TouchableOpacity, TextInput, Platform, Button } from 'react-native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const API_URL = Platform.OS === 'ios' ? 'http://localhost:5000' : 'http://10.0.2.2:5000';
 
-const AuthScreen = () => {
+const AuthScreen = ({navigation}) => {
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -64,6 +66,7 @@ const AuthScreen = () => {
                     onLoggedIn(jsonRes.token);
                     setIsError(false);
                     setMessage(jsonRes.message);
+                    navigation.navigate('Hello')
                 }
             } catch (err) {
                 console.log(err);
@@ -95,6 +98,10 @@ const AuthScreen = () => {
                         <TouchableOpacity style={styles.buttonAlt} onPress={onChangeHandler}>
                             <Text style={styles.buttonAltText}>{isLogin ? 'Sign Up' : 'Log In'}</Text>
                         </TouchableOpacity>
+                        {/* <Button title="Hello"
+                            onPress={() => navigation.navigate('Hello')}>
+                            
+                        </Button> */}
                     </View>    
                 </View>
             </View>
