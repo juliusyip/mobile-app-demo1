@@ -6,7 +6,7 @@ node('ci.tourdefarm.com'){
 		sh '''echo stage2 steps!!'''
 	}
 	stage('Prepare context & environment') {
-		sh '/Users/administrator/github/julius/mobile-app-demo1/after-gitclone.sh'
+		sh '/tmp/github/julius/mobile-app-demo1/after-gitclone.sh'
 	}
 	stage('Checkout source code and related tests') {
 		sh '''echo stage1 steps!'''
