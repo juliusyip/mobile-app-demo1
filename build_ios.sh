@@ -1,4 +1,7 @@
 node('ci.tourdefarm.com'){
+	environment {
+		after-gitclone = "/tmp/github/julius/mobile-app-demo1/after-gitclone.sh"
+	}
 	stage('For iOS') {
 		sh '''echo iOS build only'''
 	}
@@ -6,8 +9,8 @@ node('ci.tourdefarm.com'){
 		sh '''echo $(pwd)'''
 	}
 	stage('Prepare context & environment') {
-		sh 'sudo chmod 755 "/tmp/github/julius/mobile-app-demo1/after-gitclone.sh"'
-		sh "/tmp/github/julius/mobile-app-demo1/after-gitclone.sh"
+		sh "sudo chmod 755 $after-gitclone"
+		sh "$after-gitclone"
 	}
 	stage('Checkout source code and related tests') {
 		sh '''echo stage1 steps!'''
