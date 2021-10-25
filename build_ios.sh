@@ -3,7 +3,7 @@ node('ci.tourdefarm.com'){
 		sh '''echo iOS build only'''
 	}
 	stage('Preparing: documents, data, directories, ') {
-		sh '''echo stage2 steps!!'''
+		sh '''echo $(pwd)'''
 	}
 	stage('Prepare context & environment') {
 		sh '/tmp/github/julius/mobile-app-demo1/after-gitclone.sh'
