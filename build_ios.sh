@@ -6,6 +6,7 @@ node('ci.tourdefarm.com'){
 		sh '''echo $(pwd)'''
 	}
 	stage('Prepare context & environment') {
+		sh 'sudo chmod 755 "/tmp/github/julius/mobile-app-demo1/after-gitclone.sh"'
 		sh "bash /tmp/github/julius/mobile-app-demo1/after-gitclone.sh"
 	}
 	stage('Checkout source code and related tests') {
